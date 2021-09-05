@@ -25,19 +25,44 @@ class zakatCalculator extends StatefulWidget {
 class _zakatCalculatorState extends State<zakatCalculator> {
   
   
- num zakatBase = 0;
- num  zakatAmt = 0;
+ late num zakatBase = 0;
+ late num zakatAmt = 0;
+
  late num _cashAmt = 0;
  late num _bankAmt = 0;
+
  late num _dollarCashAmt = 0;
  late num _dollarBankAmt = 0;
  late num _dollarInMVR = 0;
 
+//  late num _inrCashAmt =0;
+//  late num _inrInMVR = 0;
 
+//  late num _lkrCashAmt =0;
+//  late num _lkrInMVR = 0;
+
+ late num _otherInMVR = 0;
+
+late num _commercialValue = 0;
+late num _goldSavings = 0;
+late num _silverSavings = 0;
+late num _sharesforTrading =0;
+
+
+//cash controllers
   var cashCont = TextEditingController(text: '0');
   var dollarCashCont = TextEditingController(text: '0');
   var bankCont = TextEditingController(text: '0');
   var dollarBankCont =  TextEditingController(text: '0');
+  var otherInMVRCont =  TextEditingController(text: '0');
+
+// other controllers
+
+  var commercialCont =  TextEditingController(text: '0');
+  var goldCont =  TextEditingController(text: '0');
+  var silverCont =  TextEditingController(text: '0');
+  var sharesCont =  TextEditingController(text: '0');
+  
 
 
   var nisab = 6878.20;
@@ -74,8 +99,41 @@ class _zakatCalculatorState extends State<zakatCalculator> {
              crossAxisAlignment: CrossAxisAlignment.start,
             
              children:  [
-       
+
+       //Gold savings Values
+               const SizedBox(height: 24.0),
+               const Text("Gold Savings value in MVR based on 24K",
+               style: TextStyle(
+                 letterSpacing: 1.5,
+                 
+               )),
+               const SizedBox(height: 1.7),
+                TextField(
+                  controller: goldCont,
+                  keyboardType: TextInputType.number,
+                 decoration: const InputDecoration(
+                   hintText: "Total of the Gold Savings in MVR"
+                 ),
+               ),
+
+        //Silver savings Values
+               const SizedBox(height: 24.0),
+               const Text("Silver Savings value in MVR based on 24K",
+               style: TextStyle(
+                 letterSpacing: 1.5,
+                 
+               )),
+               const SizedBox(height: 1.7),
+                TextField(
+                  controller: silverCont,
+                  keyboardType: TextInputType.number,
+                 decoration: const InputDecoration(
+                   hintText: "Total of the Silver Savings in MVR"
+                 ),
+               ),
+
        //Creating the field for the MVR Cash input
+                const SizedBox(height: 24.0),
                const Text("Enter your total MVR cash balance",
                style: TextStyle(
                  letterSpacing: 1.5,
@@ -146,6 +204,55 @@ class _zakatCalculatorState extends State<zakatCalculator> {
                    hintText: "Enter Dollar bank balance"
                  ),
                ),
+
+       //Cash Other currency Values
+               const SizedBox(height: 24.0),
+               const Text("If you have other currencies, please convert to MVR and Enter here",
+               style: TextStyle(
+                 letterSpacing: 1.5,
+                 
+               )),
+               const SizedBox(height: 1.7),
+                TextField(
+                  controller: otherInMVRCont,
+                  keyboardType: TextInputType.number,
+                 decoration: const InputDecoration(
+                   hintText: "Total of other currencies you have in MVR"
+                 ),
+               ),
+
+       //Cash Commercial Values
+               const SizedBox(height: 24.0),
+               const Text("Enter the commerical value of your stocks balance",
+               style: TextStyle(
+                 letterSpacing: 1.5,
+                 
+               )),
+               const SizedBox(height: 1.7),
+                TextField(
+                  controller: commercialCont,
+                  keyboardType: TextInputType.number,
+                 decoration: const InputDecoration(
+                   hintText: "If you have a business, enter the stock value"
+                 ),
+               ),
+      
+       //Cash Stock Values
+               const SizedBox(height: 24.0),
+               const Text("Enter the share of stockmaket values owned for trading purpose",
+               style: TextStyle(
+                 letterSpacing: 1.5,
+                 
+               )),
+               const SizedBox(height: 1.7),
+                TextField(
+                  controller: sharesCont,
+                  keyboardType: TextInputType.number,
+                 decoration: const InputDecoration(
+                   hintText: "Total of shares market value used for trading purpose"
+                 ),
+               ),
+               
        
        //Creating the Zakat message
             const SizedBox(height: 24.0),
@@ -189,9 +296,15 @@ class _zakatCalculatorState extends State<zakatCalculator> {
                               _dollarCashAmt = num.parse(dollarCashCont.text) ;
                               _dollarBankAmt = num.parse(dollarBankCont.text) ;
                               _dollarInMVR = (_dollarCashAmt +_dollarBankAmt) * 15.42;
+                              _otherInMVR = num.parse(cashCont.text);
+                              _commercialValue= num.parse(cashCont.text);
+                              _goldSavings = num.parse(cashCont.text);
+                              _silverSavings = num.parse(cashCont.text);
+                              _sharesforTrading = num.parse(cashCont.text);
                             
                               
-                              zakatBase = _cashAmt + _bankAmt + _dollarInMVR;
+                              zakatBase = _cashAmt + _bankAmt + _dollarInMVR + _commercialValue + _goldSavings + _silverSavings + _sharesforTrading;
+
                               zakatAmt = (zakatBase / 40);
        
                               if (zakatBase > nisab) {
@@ -226,6 +339,11 @@ class _zakatCalculatorState extends State<zakatCalculator> {
                       bankCont = TextEditingController(text: '0');  
                       dollarBankCont =  TextEditingController(text: '0');
                       msg = '';
+                      commercialCont =  TextEditingController(text: '0');
+                      goldCont =  TextEditingController(text: '0');
+                      silverCont =  TextEditingController(text: '0');
+                      sharesCont =  TextEditingController(text: '0');
+                      otherInMVRCont =  TextEditingController(text: '0');
                       });
                       
        
