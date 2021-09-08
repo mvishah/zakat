@@ -223,7 +223,7 @@ late num _sharesforTrading =0;
 
        //Cash Commercial Values
                const SizedBox(height: 24.0),
-               const Text("Enter the commerical value of your stocks balance",
+               const Text("Enter the commerical value of trade stocks",
                style: TextStyle(
                  letterSpacing: 1.5,
                  
@@ -239,7 +239,7 @@ late num _sharesforTrading =0;
       
        //Cash Stock Values
                const SizedBox(height: 24.0),
-               const Text("Enter the share of stockmaket values owned for trading purpose",
+               const Text("Enter the market value of the shares of stockmaket owned for trading purpose",
                style: TextStyle(
                  letterSpacing: 1.5,
                  
@@ -256,12 +256,17 @@ late num _sharesforTrading =0;
        
        //Creating the Zakat message
             const SizedBox(height: 24.0),
-               Text('$msg',
-               style: const TextStyle(
-                 letterSpacing: 1.5,
-                //  fontFamily: 'FARUMA_',
-               ),
+               SizedBox(
+                 width: double.infinity,
+                 child: Text('$msg',
+                 textAlign: TextAlign.right,
+                 textDirection: TextDirection.rtl,
+                 style: const TextStyle(
+                     letterSpacing: 1.5,
+                   fontFamily: 'faruma',
+                 ),
               //  textDirection: TextDirection.rtl
+                 ),
                ), 
       
       // Nisab message
@@ -308,7 +313,9 @@ late num _sharesforTrading =0;
                               zakatAmt = (zakatBase / 40);
        
                               if (zakatBase > nisab) {
-                                msg =  'The amount required to pay as Zakat is : \nMVR $zakatAmt';
+                                msg =  
+                                // 'The amount required to pay as Zakat is : \nMVR $zakatAmt';
+                                  ' ޒަކާތުގެ ގޮތުގައި ދައްކަން ޖެހޭ ޢަދަދަކީ  $zakatAmt ދިވެހި ރުފިޔާ';
                                   // " ދިވެހި ރުފިޔާ $zakatAmt ޒަކާތުގެ ގޮތުގައި ދައްކަން ޖެހޭ ޢަދަދަކީ ",
                                   // textAlign: TextAlign.right,
                                   // textDirection: TextDirection.rtl);
