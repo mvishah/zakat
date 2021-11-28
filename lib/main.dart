@@ -301,11 +301,11 @@ late num _sharesforTrading =0;
                               _dollarCashAmt = num.parse(dollarCashCont.text) ;
                               _dollarBankAmt = num.parse(dollarBankCont.text) ;
                               _dollarInMVR = (_dollarCashAmt +_dollarBankAmt) * 15.42;
-                              _otherInMVR = num.parse(cashCont.text);
-                              _commercialValue= num.parse(cashCont.text);
-                              _goldSavings = num.parse(cashCont.text);
-                              _silverSavings = num.parse(cashCont.text);
-                              _sharesforTrading = num.parse(cashCont.text);
+                              _otherInMVR = num.parse(otherInMVRCont.text);
+                              _commercialValue= num.parse(commercialCont.text);
+                              _goldSavings = num.parse(goldCont.text);
+                              _silverSavings = num.parse(silverCont.text);
+                              _sharesforTrading = num.parse(sharesCont.text);
                             
                               
                               zakatBase = _cashAmt + _bankAmt + _dollarInMVR + _commercialValue + _goldSavings + _silverSavings + _sharesforTrading;
@@ -322,7 +322,7 @@ late num _sharesforTrading =0;
                               }
                               else {
                                 msg =
-                                  'Your Zakatable wealth is below Nisab which is \nMVR $nisab';
+                                  'Your Zakatable wealth $zakatBase is below Nisab which is \nMVR $nisab';
                                 //   'ޢަދަދު ޖައްސަވާފައި ޙިސާބު ކޮށްލައްވާ',
                                 //   textAlign: TextAlign.right,
                                 // textDirection: TextDirection.rtl);
